@@ -5,6 +5,16 @@ const fs = require('fs')  // Access to filesystem
 
 
 //////////////////////////////////////////////////////////
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+
+//////////////////////////////////////////////////////////
 // Mock data to be read in from server file
 //////////////////////////////////////////////////////////
 global.mockData = {}  // Global variable to hold the mock data
