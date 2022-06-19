@@ -5,6 +5,8 @@ const fs = require('fs')  // Access to filesystem
 
 
 //////////////////////////////////////////////////////////
+// Avoid cross-domain issues when accessing proxy port 
+//////////////////////////////////////////////////////////
 const cors = require('cors');
 const corsOptions ={
     origin:'http://localhost:3000', 
