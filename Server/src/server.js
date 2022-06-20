@@ -3,7 +3,6 @@ const app = express();
 const port = process.env.PORT || 5000; // Server on port 5000
 const fs = require('fs')  // Access to filesystem
 
-
 //////////////////////////////////////////////////////////
 // Avoid cross-domain issues when accessing proxy port 
 //////////////////////////////////////////////////////////
@@ -26,8 +25,9 @@ app.use(express.static('../public/teeny'));
 // Mock data to be read in from server file
 //////////////////////////////////////////////////////////
 global.mockData = {}  // Global variable to hold the mock data
-//const MOCK_DATA_FILE = '../data/mock_operation_data_tiny.json';
-const MOCK_DATA_FILE = '../data/MOCK_DATA_tiny.json';
+const MOCK_DATA_FILE = '../data/mock_operation_data_1.json';
+// const MOCK_DATA_FILE = '../data/mock_operation_data_tiny.json';
+// const MOCK_DATA_FILE = '../data/MOCK_DATA_tiny.json';
 
 function getData() {  // Function to start async read of the mock data
   fs.readFile(MOCK_DATA_FILE, 'utf8', (error, data) => {
@@ -42,7 +42,7 @@ function getData() {  // Function to start async read of the mock data
 
 function gotData(data) {  // Callback upon completion of mock data read
   global.mockData = JSON.parse(data);
-  console.log(global.mockData);
+  console.log(global.mockData[0]);
 }
 
 getData();                // Read in the mock data

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import operationTableReducer from '../features/operationTable/operationTableSlice'
-
-// const logger = reduxLogger.createLogger()
+import operationReducer from '../features/operation/operationSlice'
+import thingReducer from '../features/thing/thingSlice'
 
 const store = configureStore({
     reducer: {
-        operationTable: operationTableReducer,
+        operation: operationReducer,
+        thing: thingReducer,
     }, 
 })
 

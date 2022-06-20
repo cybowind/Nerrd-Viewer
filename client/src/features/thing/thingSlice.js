@@ -2,39 +2,41 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import  axios from 'axios'
 
 const initialState = {
-    // numOfOperations : 20
+    // numOfthings : 20
     loading: false,
-    operations: [],
+    things: [],
     error: ''
 }
 
 // Generates pending, fulfilled, and rejected action types
-export const fetchOperations = createAsyncThunk('user/fetchOperations', () => {
-    return axios
+export const fetchThings = createAsyncThunk('user/fetchThings', () => {
+    // export const fetchThings = createAsyncThunk('user/fetchThings', () => {
+        return axios
     // .get('http://jsonplaceholder.typicode.com/users')
     // .get('http://jameswen.com/public/nokia/mockdata/mock_operation_data_tiny.json')
     .get('http://localhost:5000/mock_data')
     .then((response) => response.data.express) //.map((operation) => operation.id))
 })
 
-const operationSlice = createSlice({
-    name: 'operation',
+
+const thingSlice = createSlice({
+    name: 'thing',
     initialState,
     extraReducers: builder => {
-        builder.addCase(fetchOperations.pending, state => {
+        builder.addCase(fetchThings.pending, state => {
             state.loading = true
         })
-        builder.addCase(fetchOperations.fulfilled, (state, action) => {
+        builder.addCase(fetchThings.fulfilled, (state, action) => {
             state.loading = false
-            state.operations = action.payload
+            state.things = action.payload
             state.error = ''
         })
-        builder.addCase(fetchOperations.rejected, (state, action) => {
+        builder.addCase(fetchThings.rejected, (state, action) => {
             state.loading = false
-            state.operations = []
+            state.things = []
             state.error = action.error.message
         })
     }
 })
 
-export default operationSlice.reducer
+export default thingSlice.reducer
