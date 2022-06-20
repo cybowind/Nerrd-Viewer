@@ -15,6 +15,12 @@ const corsOptions ={
 }
 app.use(cors(corsOptions));
 
+//////////////////////////////////////////////////////////
+// Define some routes
+//////////////////////////////////////////////////////////
+app.use(express.static('../public'));
+app.use(express.static('../public/teeny'));
+
 
 //////////////////////////////////////////////////////////
 // Mock data to be read in from server file
@@ -56,3 +62,24 @@ app.get('/mock_data', (req, res) => {
     : global.mockData
   }); 
 }); 
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+// server.js
+
+// const express = require('express');
+
+// const app = express();
+// const PORT = process.env.PORT = 4000;
+
+app.use(express.static('public'));
+app.use(express.static('public/build'));
+app.use(express.static('public/teeny'));
+app.use(express.static('images'));
+// Map nokia as part of URL path
+app.use('/nokia', express.static('public'));
+// app.use('/build', express.static('public'));
+
+// app.listen(PORT, () => {
+//     console.log("Server is running at: ", PORT);
+// });

@@ -9,7 +9,7 @@ function App() {
     <Provider store={store}>
 
     <div className="App">
-      <h1>Nerrd</h1>
+      <h1>Welcome to Nerrd</h1>
       <OperationTableView />
     </div>
     </Provider>
